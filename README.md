@@ -1,5 +1,3 @@
-# talk-quarto
-
 ## This is a guest lecture in Advance Statistics at UNO 
 
 ### How to prepare
