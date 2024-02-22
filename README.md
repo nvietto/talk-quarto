@@ -12,6 +12,3 @@ Make sure you have Quarto installed. You can find instructions [here](https://qu
 
 * code window extension used was created by Emil Hvitfeldt and can found [here](https://github.com/EmilHvitfeldt/quarto-revealjs-codewindow)
 
-### Resources
-
-Repository for the talk is located [here](https://github.com/nvietto/Talks)
