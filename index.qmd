@@ -1,0 +1,296 @@
+---
+format:
+  revealjs: 
+    theme: [default, style.scss]
+incremental: true 
+slide-number: true
+self-contained: true
+transition: fade
+revealjs-plugins:
+  - codewindow
+---
+
+# {.center}
+
+::: {.bounce }
+<b>
+<span>Creating</span> Reproducible <span>R</span> Workflows in <span>Quarto</span>
+</b>
+:::
+
+
+# About Me
+
+**PhD Candidate** in the SCCJ at UNO 
+
+**Research background** focuses on biopsychosocial criminology and quantitative methods 
+
+**Dissertation:** *A Combined Theory Data-Driven Approach to Predicting Delinquent Risk in the Future of Families and Child Wellbeing Study*
+
+
+
+![](Images/NebCrim.png)
+
+
+
+# Gameplan
+
+<br> 
+
+* Talk [Quarto]{.quarto}  
+
+<br>
+
+* Show [Quarto]{.quarto}
+
+<br> 
+
+* Do [Quarto]{.quarto}
+
+
+
+
+## What is [Quarto]{.quarto}?
+
+<br>
+
+[Quarto]{.quarto} is an open-source scientific and technical publishing system built on Pandoc.
+
+<br>
+
+[Quarto]{.quarto} evolved from [RMarkdown]{.markdown} in order to integrate other coding languages (e.g., Python, Julia, Observable, etc.).
+
+
+
+
+## Why should academics use [Quarto]{.quarto}? 
+
+<br>
+
+**It's free!** And it's built with **reproducibility** in mind. 
+
+It makes **collaboration** and **peer-reviewing** a billion times easier! 
+
+**Add text in-between code-chunks** to explain your steps ( e.g., justifying your  statistical assumptions). 
+
+Create presentation that make your teaching or presentations **interactive**.
+
+
+![](Images/quarto.png)
+
+
+
+# Let's look at some [Quarto]{.quarto} features
+
+## Interactive Presentations 
+
+[Quarto]{.quarto} Revealjs Basics
+
+
+::: columns
+
+::: {.column width="50%"}
+
+::: {.codewindow .quarto}
+index.qmd
+`````md
+---
+title: "Basic Revealjs"
+format: revealjs
+editor: visual
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished presentation.
+
+## Bullets
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+## Code
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{{r}}
+1 + 1
+```
+`````
+:::
+
+:::
+
+::: {.column width="50%"}
+
+<br>
+
+<iframe class="slide-deck" src="basics.html"></iframe>
+
+:::
+:::
+:::
+
+
+## Interactive Data Vizualizations 
+### [{plotly}](https://github.com/plotly/plotly.R)
+
+
+```{r}
+#| echo: true
+#| output-location: column
+#| fig-width: 5
+#| fig-height: 5
+
+
+library(plotly)
+library(palmerpenguins)
+
+
+plot_ly(penguins,
+        x=~bill_length_mm,
+        y=~bill_depth_mm,
+        z=~body_mass_g,
+        color = ~species)
+
+
+
+```
+
+::: notes 
+
+So this can be used for exploratory purposes to examine higher-order effects, rather than just simple main effects 
+
+
+:::
+
+## Interactive Data Vizualizations 
+### [{ggiraph}](https://github.com/davidgohel/ggiraph?tab=readme-ov-file)
+
+```{r}
+#| echo: true
+#| output-location: column
+#| fig-width: 5
+#| fig-height: 5
+
+library(ggplot2)
+library(ggiraph)
+library(palmerpenguins)
+
+interactplot <- ggplot(data = penguins,
+                       aes(x = flipper_length_mm,
+                           y = body_mass_g)) +
+  geom_point_interactive(aes(color = species,
+                             tooltip = species, 
+                             data_id = species)) +
+  theme_minimal()
+
+
+girafe(ggobj = interactplot)
+
+
+```
+
+
+## [Quarto CVs](https://github.com/schochastics/sidebar-cv)
+
+::: columns
+
+::: {.column width="50%"}
+
+![](Images/sidebar-cv.png)
+:::
+
+::: {.column width="50%"}
+
+![](Images/modern-cv.png)
+:::
+
+::: 
+
+
+# Workshop Time!
+
+## Git & GitHub
+
+<br>
+
+[Git]{.git} is a open-source **version control system**.
+
+<br>
+
+
+**GitHub** is cloud platform for hosting and sharing projects.
+
+<br>
+
+![](Images/git.png){fig-align="center"}
+
+## Clone GitHub Repo
+
+<br>
+
+Head [here](https://github.com/nvietto/Talks) and then navigate to the green box that says "Code". 
+
+<br>
+
+::: columns
+
+::: {.column width="50%"}
+
+![](Images/git1.png)
+
+:::
+
+::: {.column width="50%"}
+
+![](Images/git2.png)
+
+:::
+
+
+:::
+
+
+
+## Workshop Time!
+
+<br>
+
+**1.)** Open the workshop folder.
+
+<br>
+
+**2.)** Click on "quartobasics.qmd" and follow the directions.  
+
+<br> 
+
+**3.)** Click "reproworkflow.qmd" and follow along. 
+
+<br>
+
+## Resources{.center}
+
+
+<br> 
+
+[posit::conf(2024)](https://posit.co/blog/speak-at-posit-conf-2024/)
+
+<br> 
+
+[Tutorial: Hello, Quarto](https://quarto.org/docs/get-started/hello/rstudio.html)
+
+<br> 
+
+[R Ladies](https://rladies.org/)
+
+<br> 
+
+[R for Data Science Online Learning Community](https://github.com/rfordatascience)
+
+<br> 
+
+
+# Questions? 
