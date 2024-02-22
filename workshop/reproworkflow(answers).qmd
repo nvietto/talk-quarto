@@ -1,0 +1,148 @@
+---
+title: "Reproducible Data Workflow (answers)"
+#author: 
+format: html
+editor: source
+toc: true
+toc-location: left
+#theme: 
+self-contained: true
+
+---
+
+
+**After running each code chunk, write what you learn above the chunk**
+
+## Cook Up Data
+
+**Looks like there are five variables, and one is not numeric**
+
+```{r}
+#| results: hide
+
+# A basic Monte Carlo simulation.
+
+set.seed(1234) 
+
+data <- data.frame(
+  col1 = rnorm(n = 1000, mean = 50, sd = 5),
+  col2 = rnorm(n = 1000, mean = 250, sd = 15),
+  col3 = rnorm(n = 1000, mean = 500, sd = 50),
+  col4 = rnorm(n = 1000, mean = 700, sd = 75),
+  col5 = sample(c("A", "B", "C"), size = 1000, replace = TRUE)
+)
+
+
+# after running the above code, copy and paste "data" into your R Console to check it out
+
+
+
+data
+
+
+```
+
+
+## Recodes 
+
+**This is recode to change A to D.**
+
+```{r}
+
+# Recode col5 to shift the name of A to D so that it creates a new column called "colrecode"
+
+data$colrecode <- data$col5
+data$colrecode = ifelse(data$col5 == "A", "D", data$colrecode)
+
+
+
+```
+
+
+## Assumption Checks 
+
+**Distribution check of our DV - col1. The distribution appears to be normal.** 
+
+```{r}
+
+
+
+hist(data$col1)
+
+
+
+```
+
+
+
+## Correlations 
+
+**Appears to be an association approaching significance between col 2 and col 1.**
+
+
+```{r}
+#| message: false
+#| warning: false
+
+# Use the corr.test function in the {psych} to check for any meaningful correlations (hint: remove the column that does not contain numeric values)
+
+if (!require("pacman")) install.packages("pacman")
+library(pacman)
+pacman::p_load(tidyverse, psych)
+
+
+# if stuck, try ?psych in the R console 
+
+data2 <- data |> 
+  dplyr::select(col1, col2, col3, col4) |> 
+  as.tibble()
+
+corr.test(data2)
+
+```
+
+
+## Regression 
+
+**There appears to be something nearly meaningful occurring. In other words, for every one-unit increase in col2, there is a 0.019 unit increase in col1.** 
+
+
+```{r}
+
+# Take the column that is approaching significance and run an OLS with the remaining columns (hint: col1 ~ col2 + col3 + col4)
+
+
+ols <- lm(col1 ~ col2 + col3 + col4, data = data2)
+
+summary(ols)
+
+
+```
+
+
+## Data Viz 
+
+**There appears to be a main effect occurring b/w x and y but only slightly**
+
+```{r}
+#| warning: false
+
+# Plot your findings using a geom_point + geom_smooth ggplot
+
+
+
+ggplot(data2, aes(x = col2, y = col1)) +
+  geom_point() +
+  geom_smooth() + 
+  theme_minimal()
+  
+
+
+
+
+
+
+```
+
+
+

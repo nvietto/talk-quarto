@@ -1,0 +1,102 @@
+---
+title: "Quarto Basics (Answers)"
+author: "Nicholas Vietto"
+format: html
+editor: source
+toc: true
+toc-location: left
+theme: sketchy
+self-contained: true
+
+---
+
+Some basic things to know about creating an HTML Quarto doc! 
+
+
+1.) Go ahead and add # followed by some text then ## followed by some more text (hint: This will become a header).  
+
+# This is a First Level heeader 
+
+## This is a Second level header
+
+Hit the "Render" button above.
+
+2.) One the sentence below place this ** in front and after the words "bold text." Now do this again but to the words "italic text" but with only one star on each end.  
+
+This is  **bold text**.  
+
+This is *italic text*.  
+
+
+Hit the "Render" button above.
+
+
+3.) Head to the YAML at the top and enter your name author section. (Hint: be sure to remove the # in front of the word, you will also need " ")
+
+
+Hit the "Render" button above.  
+
+
+4.) Add the word "sketchy" to the end of theme in the YAML. (Hint: don't include the " "). 
+
+
+Hit the "Render" button above.
+
+
+5.) Copy and paste this [](https://quarto.org/docs/output-formats/html-themes.html) and enter the word "Click Here" in between the [ ] (hint: don't include the " ").
+
+
+[Click Here](https://quarto.org/docs/output-formats/html-themes.html)
+
+
+
+
+6.) Copy and paste the following equation e = mc^2 below, now put $ in front and after it. 
+
+
+$e=mc^2$
+
+
+7.) Head to the top right corner of your screen and click the +c button that is next to the ⬆️ arrow. 
+
+```{r}
+
+
+
+```
+
+
+8.) Within the code chunk enter 1+1
+
+```{r}
+
+1+1 
+
+
+```
+
+
+
+**Bonus:** *(Only for 'Last of Us' fans 🙃)*
+
+
+```{r}
+#| warning: false
+#| message: false
+
+if (!require("devtools")) install.packages("devtools") # installs devtools if you don't have it
+
+library(devtools)  
+
+devtools::install_github("nvietto/nopunintended") 
+
+library(nopunintended)
+
+nopunintended()
+
+
+```
+
+
+
+

@@ -1,0 +1,156 @@
+---
+title: "Reproducible Data Workflow"
+#author: 
+format: html
+editor: source
+toc: true
+toc-location: left
+#theme: 
+self-contained: true
+
+---
+
+
+**After running each code chunk, write what you learn above the chunk**
+
+## Cook Up Data
+
+
+
+```{r}
+#| results: hide
+
+
+# A basic Monte Carlo simulation.
+
+
+
+
+
+
+
+
+# after running the above code, copy and paste "data" into your R Console to check it out
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+
+## Recodes 
+
+
+```{r}
+
+
+# Recode col5 to shift the name of A to D so that it creates a new column called "colrecode"
+
+
+
+
+
+
+
+
+
+```
+
+
+## Assumption Checks 
+
+
+
+```{r}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+
+
+## Correlations 
+
+
+```{r}
+#| warning: false
+#| message: false
+
+# Use the corr.test function in the {psych} to check for any meaningful correlations (hint: remove the column that does not contain numeric values)
+
+if (!require("pacman")) install.packages("pacman")
+library(pacman)
+pacman::p_load(tidyverse, psych)
+
+# if stuck, try ?psych in the R console 
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+
+## Regression 
+
+
+```{r}
+
+# Take the column that is approaching significance and run an OLS with the remaining columns (hint: col1 ~ col2 + col3 + col4)
+
+
+
+
+
+
+
+```
+
+
+## Data Viz 
+
+
+```{r}
+#| warning: false
+
+# Plot your findings using a geom_point + geom_smooth ggplot
+
+
+
+
+
+
+
+
+
+```
+
+
